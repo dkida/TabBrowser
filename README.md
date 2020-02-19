@@ -1,4 +1,4 @@
-#TabBrowser
+# TabBrowser
 
 To run the project:
 
@@ -6,4 +6,4 @@ To run the project:
 2. Run `npm install`
 3. Run `npm start`
 
-Demo: http://dkida.github.io/TabBrowser
+View online at: http://dkida.github.io/TabBrowser
