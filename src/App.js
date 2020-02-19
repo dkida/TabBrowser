@@ -1,7 +1,7 @@
 import React, {Component}from 'react';
 import './App.css';
 import SearchBox from './components/SearchBox';
-import TableOfSongs from './components/tableOfSongs';
+import TableOfSongs from './components/TableOfSongs';
 import Scroll from './components/Scroll';
 
 class App extends Component {
@@ -14,9 +14,17 @@ class App extends Component {
     }
   }
 
+  /**
+   * Keeps track of changes made by the user in the input field.
+   */
 onSearchChange = (event) => {
   this.setState({ pattern: event.target.value });
 }
+
+/**
+ * When the user clicks the 'Search' button, this function fetches a .json object with the list of songs and properties. It also sets
+ * state for the tab type that the user has chosen.
+ */
 onButtonSubmit = () => {
   //https://cors-anywhere.herokuapp.com/
   const element = document.getElementById("tabs");
@@ -30,22 +38,17 @@ onButtonSubmit = () => {
     console.log("log: ", this.state.typeOfTab);
 }
 
-onSelectChange = (event) => {
-  //this.setState({ typeOfTab: event.target.value });
-}
-
   render() {
     const { listOfSongs, typeOfTab } = this.state;
     return (
       <div className='tc'>
-        <SearchBox onSearchChange={this.onSearchChange} onButtonSubmit={this.onButtonSubmit} onSelectChange={this.onSelectChange}/>
+        <SearchBox onSearchChange={this.onSearchChange} onButtonSubmit={this.onButtonSubmit}/>
         { !listOfSongs.length == 0 ?
           <Scroll>
             <TableOfSongs songs={listOfSongs} tab={typeOfTab}/>
           </Scroll>
           : <div></div>
         }
-
       </div>
     );
   }
