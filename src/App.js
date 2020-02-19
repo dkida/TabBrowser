@@ -35,7 +35,6 @@ onButtonSubmit = () => {
     .then(songs => this.setState({ listOfSongs: songs }))
     .catch(err => console.log(err))
     this.setState({ typeOfTab: element.options[element.selectedIndex].value});
-    console.log("log: ", this.state.typeOfTab);
 }
 
   render() {
