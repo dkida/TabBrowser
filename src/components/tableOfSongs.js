@@ -16,7 +16,7 @@ const TableOfSongs = ({ songs, tab }) => {
                         <tr>
                             <th className="fw6 bb b--black-20 pb3 pr3">Artist</th>
                             <th className="fw6 bb b--black-20 pb3 pr3">Title</th>
-                            <th className="fw6 bb b--black-20 pb3 pr3">Avaible tabs:</th>
+                            <th className="fw6 bb b--black-20 pb3 pr3">Avaible tabs</th>
                         </tr>
                     </thead>
                     {
