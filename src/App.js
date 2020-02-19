@@ -1,12 +1,14 @@
 import React, {Component}from 'react';
 import './App.css';
 import SearchBox from './components/SearchBox';
+import TableOfSongs from './components/tableOfSongs';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       pattern: '',
+      typeOfTab: '',
       listOfSongs: []
     }
   }
@@ -16,19 +18,26 @@ onSearchChange = (event) => {
 }
 onButtonSubmit = () => {
   //https://cors-anywhere.herokuapp.com/
+  const element = document.getElementById("tabs");
   fetch(`http://www.songsterr.com/a/ra/songs.json?pattern=${this.state.pattern}`, {
-    method: 'get',
+    method: 'get'
   })
     .then(response => response.json())
     .then(songs => this.setState({ listOfSongs: songs }))
     .catch(err => console.log(err))
-    console.log(this.state.listOfSongs.length)
+    this.setState({ typeOfTab: element.options[element.selectedIndex].value});
+    console.log("log: ", this.state.typeOfTab);
+}
+
+onSelectChange = (event) => {
+  //this.setState({ typeOfTab: event.target.value });
 }
 
   render() {
     return(
       <div className='tc'>
-        <SearchBox searchChange={this.onSearchChange} buttonSubmit={this.onButtonSubmit}/>
+        <SearchBox onSearchChange={this.onSearchChange} onButtonSubmit={this.onButtonSubmit} onSelectChange={this.onSelectChange}/>
+        <TableOfSongs songs={this.state.listOfSongs} tab={this.state.typeOfTab}/>
       </div>
     );
   }
