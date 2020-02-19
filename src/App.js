@@ -2,6 +2,7 @@ import React, {Component}from 'react';
 import './App.css';
 import SearchBox from './components/SearchBox';
 import TableOfSongs from './components/tableOfSongs';
+import Scroll from './components/Scroll';
 
 class App extends Component {
   constructor() {
@@ -34,10 +35,17 @@ onSelectChange = (event) => {
 }
 
   render() {
-    return(
+    const { listOfSongs, typeOfTab } = this.state;
+    return (
       <div className='tc'>
         <SearchBox onSearchChange={this.onSearchChange} onButtonSubmit={this.onButtonSubmit} onSelectChange={this.onSelectChange}/>
-        <TableOfSongs songs={this.state.listOfSongs} tab={this.state.typeOfTab}/>
+        { !listOfSongs.length == 0 ?
+          <Scroll>
+            <TableOfSongs songs={listOfSongs} tab={typeOfTab}/>
+          </Scroll>
+          : <div></div>
+        }
+
       </div>
     );
   }
