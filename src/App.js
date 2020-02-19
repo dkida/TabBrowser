@@ -28,7 +28,7 @@ onSearchChange = (event) => {
 onButtonSubmit = () => {
   //https://cors-anywhere.herokuapp.com/
   const element = document.getElementById("tabs");
-  fetch(`http://www.songsterr.com/a/ra/songs.json?pattern=${this.state.pattern}`, {
+  fetch(`https://www.songsterr.com/a/ra/songs.json?pattern=${this.state.pattern}`, {
     method: 'get'
   })
     .then(response => response.json())
